@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Huffman Coding</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <video autoplay loop muted playsinline class="background-video">
+    <source src="backgroundvideo.webm" type="video/mp4"> <!-- Replace with your video file -->
+    Your browser does not support the video tag.
+  </video>
+  <div class="main-container">
+
+    <header>
+      <button class="back-arrow" id="back-button">←</button>
+      <h1 class="glowing-heading">Huffman Coding</h1>
+
+    </header>
+    <div class="container" id="nav-layout">
+      <div class="row">
+        <button class="btn" id="text-encoding-button">Encode Text</button>
+        <button class="btn" id="file-upload-button">Upload Text File</button>
+      </div>
+      <div class="row">
+        <button class="btn" id="image-compression-button">Image Compression</button>
+      </div>
+    </div>
+    <!-- Dynamic Layouts -->
+    <div id="text-layout" class="dynamic-layout">
+      <h2>Text Encoding</h2>
+      <textarea id="text-input" rows=5 placeholder="Write text here to encode..."></textarea>
+      <button id="text-encode-button">Encode</button>
+      <div class="encoded-output">
+        <textarea id="encoded-text" row=5 style="display: none;" placeholder="Encoded text will appear here..."
+          readonly></textarea>
+        <textarea id="encoded-codes" row=5 style="display: none;" placeholder="Encoded codes will appear here..."
+          readonly></textarea>
+      </div>
+    </div>
+    <div id="file-layout" class="dynamic-layout">
+      <h2>File Upload & Encoding</h2>
+      <p>Note: Upload .txt file to encode or .bin to decode</p>
+      <input type="file" id="file-input" accept=".txt,.bin">
+      <div class="nav-buttons">
+        <button id="file-encode-button" onclick="compressFile()">Compress File</button>
+        <button id="file-decode-button" onclick="decompressFile()">Decompress File</button>
+      </div>
+      <div id='compression-ratio'>
+        <h3 class='size'>Original Size: <span id="original">0kb</span></h3>
+        <h3 class='size'>Compressed Size: <span id="compressed">0kb</span></h3>
+        <h3 class='size'>Compression ratio: <span id="compression-ratio-value">0%</span></h3>
+      </div>
+      <button id="downloadLink" style="display: none;">Download Compressed File</button>
+      <button id="downloadDecodedLink" style="display: none;">Download Decompressed File</button>
+    </div>
+    <div id="image-layout" class="dynamic-layout">
+      <h2>Image Compression</h2>
+      <input type="file" id="image-input" accept="image/*">
+      <button id="image-encode-button" onclick="compressImage()">Compress Image</button>
+      <canvas id="originalCanvas" width="300" height="300"></canvas>
+      <canvas id="decompressedCanvas" width="300" height="300"></canvas>
+      <div id='image-compression-ratio' style="display: none;">
+        <h3 class='size'>Original Size: <span id='original2'>0</span></h3>
+        <h3 class='size'>Compressed Size: <span id='compressed2'>0</span></h3>
+      
+        <h3 class='size'>Compression ratio: <span id="compression-ratio-value2">0</span></h3>
+      </div>
+      <a id="download-encoded-image" style="display: none;">Download Compressed Image</a>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
